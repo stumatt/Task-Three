@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-Item {
+FocusScope{
 
     property alias background: app.color
     property alias icon: app_icon.source
@@ -15,6 +15,11 @@ Item {
         radius:13
         width: app_icon.implicitWidth + __margin * 2
         height: app_icon.implicitHeight + __margin * 2
+        focus: true
+        border {
+            color: activeFocus ? "#ffc20e" : color
+            width: 5
+        }
 
         Image {
             id: app_icon

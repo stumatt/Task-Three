@@ -13,9 +13,11 @@ Window {
         anchors.fill:parent
 
         //Blocco Media Player
-
         Rectangle {
             id:player
+
+//            Keys.onRightPressed:  thumbsup.focus=true
+//            Keys.onBacktabPressed: phone.focus = true
 
             anchors{
                 top: root.top
@@ -39,9 +41,12 @@ Window {
                 height: player.height*0.25
                 color:"white"
                 anchors.top: player.bottom
+//                border {
+//                    color: player.activeFocus ? "yellow" : color
+//                    width: 5
+//                }
 
-
-                Image {
+                BorderImage {
                     id: thumbsup
                     source: "images/thumbs_up.png"
                     anchors {
@@ -49,9 +54,24 @@ Window {
                         left: playerbar.left
                         leftMargin: playerbar.width*0.05
                     }
+                    Keys.onRightPressed: previous.focus = true
+                    Keys.onLeftPressed: thumbsdown.focus = true
+                    Keys.onBacktabPressed: phone.focus = true
+                    Keys.onTabPressed: spotify.focus = true
+
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -border.width
+                        z: -1
+                        border.width: 3
+                        border.color: "#ffc20e"
+                        color: 'transparent'
+                        visible: parent.focus ? true:false
+                    }
                 }
 
-                Image {
+
+                BorderImage {
                     id: previous
                     source: "images/previous.png"
                     anchors {
@@ -59,17 +79,47 @@ Window {
                         right: start.left
                         rightMargin: playerbar.width*0.15
                     }
+                    Keys.onLeftPressed: thumbsup.focus = true
+                    Keys.onRightPressed: start.focus = true
+                    Keys.onBacktabPressed: phone.focus = true
+                    Keys.onTabPressed: spotify.focus = true
+
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -border.width
+                        z: -1
+                        border.width: 3
+                        border.color: "#ffc20e"
+                        color: 'transparent'
+                        visible: parent.focus ? true:false
+                    }
                 }
-                Image {
+
+                BorderImage {
                     id:start
                     source: "images/start.png"
+                    focus:true
                     anchors {
                         horizontalCenter: playerbar.horizontalCenter
                         verticalCenter: playerbar.verticalCenter
                     }
+                    Keys.onLeftPressed: previous.focus = true
+                    Keys.onRightPressed: next.focus = true
+                    Keys.onBacktabPressed: phone.focus = true
+                    Keys.onTabPressed: spotify.focus = true
+
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -border.width
+                        z: -1
+                        border.width: 3
+                        border.color: "#ffc20e"
+                        color: 'transparent'
+                        visible: parent.focus ? true:false
+                    }
                 }
 
-                Image {
+                BorderImage {
                     id: next
                     source: "images/next.png"
                     anchors {
@@ -77,15 +127,44 @@ Window {
                         left: start.right
                         leftMargin: playerbar.width*0.15
                     }
+                    Keys.onLeftPressed: start.focus = true
+                    Keys.onRightPressed: thumbsdown.focus = true
+                    Keys.onBacktabPressed: phone.focus = true
+                    Keys.onTabPressed: spotify.focus = true
+
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -border.width
+                        z: -1
+                        border.width: 3
+                        border.color: "#ffc20e"
+                        color: 'transparent'
+                        visible: parent.focus ? true:false
+                    }
+
                 }
 
-                Image {
+                BorderImage {
                     id: thumbsdown
                     source: "images/thumbs_down.png"
                     anchors {
                         verticalCenter: start.verticalCenter
                         right: playerbar.right
                         rightMargin: playerbar.width*0.05
+                    }
+                    Keys.onLeftPressed: next.focus = true
+                    Keys.onRightPressed: thumbsup.focus = true
+                    Keys.onBacktabPressed: phone.focus = true
+                    Keys.onTabPressed: spotify.focus = true
+
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -border.width
+                        z: -1
+                        border.width: 3
+                        border.color: "#ffc20e"
+                        color: 'transparent'
+                        visible: parent.focus ? true:false
                     }
                 }
             }
@@ -98,26 +177,38 @@ Window {
             id:spotify
             icon: "images/spotify.png"
             background: "#0dd3ff"
-            text: "Spotify"
+            text: "Spotify"            
             anchors {
                 top: parent.top
                 topMargin: __margin
                 left: parent.horizontalCenter
                 leftMargin: __margin * 4
             }
+            Keys.onLeftPressed: youtube.focus = true
+            Keys.onRightPressed: playstore.focus = true
+            Keys.onUpPressed: pandora.focus = true
+            Keys.onDownPressed: pandora.focus = true
+            Keys.onBacktabPressed: start.focus = true
+            Keys.onTabPressed: phone.focus = true
         }
 
         AppLauncher {
             id:playstore
             icon: "images/playstore.png"
             background: "#a51890"
-            text: "Play Store"
+            text: "Play Store"            
             anchors {
                 top: parent.top
                 topMargin: __margin
                 left: spotify.right
                 leftMargin: __margin * 4
             }
+            Keys.onLeftPressed: spotify.focus = true
+            Keys.onRightPressed: youtube.focus = true
+            Keys.onUpPressed: playmusic.focus = true
+            Keys.onDownPressed: playmusic.focus = true
+            Keys.onBacktabPressed: start.focus = true
+            Keys.onTabPressed: phone.focus = true
         }
 
         AppLauncher {
@@ -131,6 +222,12 @@ Window {
                 left: playstore.right
                 leftMargin: __margin * 4
             }
+            Keys.onLeftPressed: playstore.focus = true
+            Keys.onRightPressed: spotify.focus = true
+            Keys.onUpPressed: downloads.focus = true
+            Keys.onDownPressed: downloads.focus = true
+            Keys.onBacktabPressed: start.focus = true
+            Keys.onTabPressed: phone.focus = true
         }
 
         AppLauncher {
@@ -144,6 +241,12 @@ Window {
                 left: parent.horizontalCenter
                 leftMargin: __margin * 4
             }
+            Keys.onLeftPressed: downloads.focus = true
+            Keys.onRightPressed: playmusic.focus = true
+            Keys.onUpPressed: spotify.focus = true
+            Keys.onDownPressed: spotify.focus = true
+            Keys.onBacktabPressed: start.focus = true
+            Keys.onTabPressed: phone.focus = true
         }
 
         AppLauncher {
@@ -157,6 +260,12 @@ Window {
                 left: pandora.right
                 leftMargin: __margin * 4
             }
+            Keys.onLeftPressed: pandora.focus = true
+            Keys.onRightPressed: downloads.focus = true
+            Keys.onUpPressed: playstore.focus = true
+            Keys.onDownPressed: playstore.focus = true
+            Keys.onBacktabPressed: start.focus = true
+            Keys.onTabPressed: phone.focus = true
         }
 
         AppLauncher {
@@ -170,6 +279,12 @@ Window {
                 left: playmusic.right
                 leftMargin: __margin * 4
             }
+            Keys.onLeftPressed: playmusic.focus = true
+            Keys.onRightPressed: pandora.focus = true
+            Keys.onUpPressed: youtube.focus = true
+            Keys.onDownPressed: youtube.focus = true
+            Keys.onBacktabPressed: start.focus = true
+            Keys.onTabPressed: phone.focus = true
         }
 
 
@@ -222,24 +337,33 @@ Window {
             id:phone
             icon: "images/phone.png"
             background: "#72ef36"
+          //focus:true
             anchors {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
                 left: parent.left
                 leftMargin: __margin * 1.5
             }
+            Keys.onRightPressed: podcast.focus = true
+            Keys.onLeftPressed: settings.focus = true
+            Keys.onTabPressed: start.focus = true
+            Keys.onBacktabPressed: spotify.focus = true
         }
 
         AppLauncher {
             id:podcast
             icon: "images/podcast.png"
-            background: "#a51890"
+            background: "#a51890"            
             anchors {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
                 left: phone.right
                 leftMargin: __margin * 2.4
             }
+            Keys.onRightPressed: play.focus=true
+            Keys.onLeftPressed: phone.focus=true
+            Keys.onTabPressed: start.focus = true
+            Keys.onBacktabPressed: spotify.focus = true
         }
 
         AppLauncher {
@@ -251,7 +375,11 @@ Window {
                 bottomMargin: __margin * 1.5
                 left: podcast.right
                 leftMargin: __margin * 2.4
-            }
+            }            
+            Keys.onRightPressed: menu.focus=true
+            Keys.onLeftPressed: podcast.focus=true
+            Keys.onTabPressed: start.focus = true
+            Keys.onBacktabPressed: spotify.focus = true
         }
 
         AppLauncher {
@@ -264,6 +392,10 @@ Window {
                 left: play.right
                 leftMargin: __margin * 2.4
             }
+            Keys.onRightPressed: maps.focus=true
+            Keys.onLeftPressed: play.focus=true
+            Keys.onTabPressed: start.focus = true
+            Keys.onBacktabPressed: spotify.focus = true
         }
 
         AppLauncher {
@@ -275,7 +407,11 @@ Window {
                 bottomMargin: __margin * 1.5
                 left: menu.right
                 leftMargin: __margin * 2.4
-            }
+            }            
+            Keys.onRightPressed: music.focus=true
+            Keys.onLeftPressed: menu.focus=true
+            Keys.onTabPressed: start.focus = true
+            Keys.onBacktabPressed: spotify.focus = true
         }
 
         AppLauncher {
@@ -288,6 +424,10 @@ Window {
                 left: maps.right
                 leftMargin: __margin * 2.4
             }
+            Keys.onRightPressed: settings.focus=true
+            Keys.onLeftPressed: maps.focus=true
+            Keys.onTabPressed: start.focus = true
+            Keys.onBacktabPressed: spotify.focus = true
         }
 
 
@@ -301,6 +441,11 @@ Window {
                 right: root.right
                 rightMargin: __margin * 1.5
             }
+            Keys.onRightPressed: phone.focus=true
+            Keys.onLeftPressed: music.focus=true
+            Keys.onTabPressed: start.focus = true
+            Keys.onBacktabPressed: spotify.focus = true
+
         }
 
 
