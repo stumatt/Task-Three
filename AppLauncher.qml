@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-FocusScope{
+FocusScope{ //Se non mettessi FocusScope non riuscirei a spostarmi fra le AppLauncher con le keys
 
     property alias background: app.color
     property alias icon: app_icon.source

@@ -13,9 +13,10 @@ Window {
         color:"#222"
         anchors.fill:parent
 
-        //Media Player
-        Rectangle {
-            id:player
+        Loader {
+            id:loader
+            sourceComponent: media_player
+            focus: true
             anchors{
                 top: root.top
                 topMargin: 10
@@ -25,144 +26,187 @@ Window {
                 bottom: root.verticalCenter
                 bottomMargin: 0.03*root.height
             }
+        }
 
-            Image {
-                id: player_image
-                source: "images/taylor.jpg"
-                anchors.fill: parent
+        //Media Player
+        Component {
+            id: media_player
+
+            Rectangle {
+                id:player
+                width: loader.width
+                height: loader.height
+                //activeFocusOnTab: true
+                //focus: true
+                Image {
+                    id: player_image
+                    source: "images/taylor.jpg"
+                    anchors.fill: parent
+                    //focus: true
+                }
+
+                //debug
+                Rectangle {
+                    anchors.fill: parent
+                    anchors.margins: -border.width
+                    z: -1
+                    border.width: 50
+                    border.color: "#ffc20e"
+                    color: 'transparent'
+                    visible: parent.focus ? true:false
+                }
+
+                //PlayerBar
+                Rectangle{
+                    id:playerbar
+                    width: player.width
+                    height: player.height*0.25
+                    color:"white"
+                    anchors.top: player.bottom
+                    //activeFocusOnTab: true
+
+                    //debug: non vogliamo questo focus
+                    Rectangle {
+                        anchors.fill: parent
+                        anchors.margins: -border.width
+                        z: -1
+                        border.width: 3
+                        border.color: "#ffc20e"
+                        color: 'transparent'
+                        visible: parent.focus ? true:false
+                    }
+
+                    //Player Buttons
+                    BorderImage {
+                        id: thumbsup
+                        source: "images/thumbs_up.png"
+                        //focus: true
+                        anchors {
+                            verticalCenter: start.verticalCenter
+                            left: playerbar.left
+                            leftMargin: playerbar.width*0.05
+                        }
+                        Keys.onRightPressed: previous.focus = true
+                        Keys.onLeftPressed: thumbsdown.focus = true
+                        Keys.onBacktabPressed: phone.focus = true
+                        Keys.onTabPressed: spotify.focus = true
+
+                        Rectangle {
+                            anchors.fill: parent
+                            anchors.margins: -border.width
+                            z: -1
+                            border.width: 3
+                            border.color: "#ffc20e"
+                            color: 'transparent'
+                            visible: parent.focus ? true:false
+                        }
+                    }
+
+
+                    BorderImage {
+                        id: previous
+                        source: "images/previous.png"
+                        //focus: true
+                        anchors {
+                            verticalCenter: start.verticalCenter
+                            right: start.left
+                            rightMargin: playerbar.width*0.15
+                        }
+                        Keys.onLeftPressed: thumbsup.focus = true
+                        Keys.onRightPressed: start.focus = true
+                        Keys.onBacktabPressed: phone.focus = true
+                        Keys.onTabPressed: spotify.focus = true
+
+                        Rectangle {
+                            anchors.fill: parent
+                            anchors.margins: -border.width
+                            z: -1
+                            border.width: 3
+                            border.color: "#ffc20e"
+                            color: 'transparent'
+                            visible: parent.focus ? true:false
+                        }
+                    }
+
+                    BorderImage {
+                        id:start
+                        source: "images/start.png"
+//                        activeFocusOnTab: true
+                        focus: true
+                        anchors {
+                            horizontalCenter: playerbar.horizontalCenter
+                            verticalCenter: playerbar.verticalCenter
+                        }
+                        Keys.onLeftPressed: previous.focus = true
+                        Keys.onRightPressed: next.focus = true
+                        Keys.onBacktabPressed: phone.focus = true
+                        Keys.onTabPressed: spotify.focus = true
+
+                        Rectangle {
+                            anchors.fill: parent
+                            anchors.margins: -border.width
+                            z: -1
+                            border.width: 3
+                            border.color: "#ffc20e"
+                            color: 'transparent'
+                            visible: parent.focus ? true:false
+                        }
+                    }
+
+                    BorderImage {
+                        id: next
+                        source: "images/next.png"
+                        //focus: true
+                        anchors {
+                            verticalCenter: start.verticalCenter
+                            left: start.right
+                            leftMargin: playerbar.width*0.15
+                        }
+                        Keys.onLeftPressed: start.focus = true
+                        Keys.onRightPressed: thumbsdown.focus = true
+                        Keys.onBacktabPressed: phone.focus = true
+                        Keys.onTabPressed: spotify.focus = true
+
+                        Rectangle {
+                            anchors.fill: parent
+                            anchors.margins: -border.width
+                            z: -1
+                            border.width: 3
+                            border.color: "#ffc20e"
+                            color: 'transparent'
+                            visible: parent.focus ? true:false
+                        }
+
+                    }
+
+                    BorderImage {
+                        id: thumbsdown
+                        source: "images/thumbs_down.png"
+                        //focus: true
+                        anchors {
+                            verticalCenter: start.verticalCenter
+                            right: playerbar.right
+                            rightMargin: playerbar.width*0.05
+                        }
+                        Keys.onLeftPressed: next.focus = true
+                        Keys.onRightPressed: thumbsup.focus = true
+                        Keys.onBacktabPressed: phone.focus = true
+                        Keys.onTabPressed: spotify.focus = true
+
+                        Rectangle {
+                            anchors.fill: parent
+                            anchors.margins: -border.width
+                            z: -1
+                            border.width: 3
+                            border.color: "#ffc20e"
+                            color: 'transparent'
+                            visible: parent.focus ? true:false
+                        }
+                    }
+                }
+
             }
 
-            //PlayerBar
-            Rectangle{
-                id:playerbar
-                width: player.width
-                height: player.height*0.25
-                color:"white"
-                anchors.top: player.bottom
-
-                //Player Buttons
-                BorderImage {
-                    id: thumbsup
-                    source: "images/thumbs_up.png"
-                    anchors {
-                        verticalCenter: start.verticalCenter
-                        left: playerbar.left
-                        leftMargin: playerbar.width*0.05
-                    }
-                    Keys.onRightPressed: previous.focus = true
-                    Keys.onLeftPressed: thumbsdown.focus = true
-                    Keys.onBacktabPressed: phone.focus = true
-                    Keys.onTabPressed: spotify.focus = true
-
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: -border.width
-                        z: -1
-                        border.width: 3
-                        border.color: "#ffc20e"
-                        color: 'transparent'
-                        visible: parent.focus ? true:false
-                    }
-                }
-
-
-                BorderImage {
-                    id: previous
-                    source: "images/previous.png"
-                    anchors {
-                        verticalCenter: start.verticalCenter
-                        right: start.left
-                        rightMargin: playerbar.width*0.15
-                    }
-                    Keys.onLeftPressed: thumbsup.focus = true
-                    Keys.onRightPressed: start.focus = true
-                    Keys.onBacktabPressed: phone.focus = true
-                    Keys.onTabPressed: spotify.focus = true
-
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: -border.width
-                        z: -1
-                        border.width: 3
-                        border.color: "#ffc20e"
-                        color: 'transparent'
-                        visible: parent.focus ? true:false
-                    }
-                }
-
-                BorderImage {
-                    id:start
-                    source: "images/start.png"
-                    focus:true
-                    anchors {
-                        horizontalCenter: playerbar.horizontalCenter
-                        verticalCenter: playerbar.verticalCenter
-                    }
-                    Keys.onLeftPressed: previous.focus = true
-                    Keys.onRightPressed: next.focus = true
-                    Keys.onBacktabPressed: phone.focus = true
-                    Keys.onTabPressed: spotify.focus = true
-
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: -border.width
-                        z: -1
-                        border.width: 3
-                        border.color: "#ffc20e"
-                        color: 'transparent'
-                        visible: parent.focus ? true:false
-                    }
-                }
-
-                BorderImage {
-                    id: next
-                    source: "images/next.png"
-                    anchors {
-                        verticalCenter: start.verticalCenter
-                        left: start.right
-                        leftMargin: playerbar.width*0.15
-                    }
-                    Keys.onLeftPressed: start.focus = true
-                    Keys.onRightPressed: thumbsdown.focus = true
-                    Keys.onBacktabPressed: phone.focus = true
-                    Keys.onTabPressed: spotify.focus = true
-
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: -border.width
-                        z: -1
-                        border.width: 3
-                        border.color: "#ffc20e"
-                        color: 'transparent'
-                        visible: parent.focus ? true:false
-                    }
-
-                }
-
-                BorderImage {
-                    id: thumbsdown
-                    source: "images/thumbs_down.png"
-                    anchors {
-                        verticalCenter: start.verticalCenter
-                        right: playerbar.right
-                        rightMargin: playerbar.width*0.05
-                    }
-                    Keys.onLeftPressed: next.focus = true
-                    Keys.onRightPressed: thumbsup.focus = true
-                    Keys.onBacktabPressed: phone.focus = true
-                    Keys.onTabPressed: spotify.focus = true
-
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: -border.width
-                        z: -1
-                        border.width: 3
-                        border.color: "#ffc20e"
-                        color: 'transparent'
-                        visible: parent.focus ? true:false
-                    }
-                }
-            }
 
         }
 
@@ -172,6 +216,7 @@ Window {
             icon: "images/spotify.png"
             background: "#0dd3ff"
             text: "Spotify"
+            focus:true
             anchors {
                 top: parent.top
                 topMargin: __margin
@@ -182,7 +227,7 @@ Window {
             Keys.onRightPressed: playstore.focus = true
             Keys.onUpPressed: pandora.focus = true
             Keys.onDownPressed: pandora.focus = true
-            Keys.onBacktabPressed: start.focus = true
+            Keys.onBacktabPressed: loader.focus= true
             Keys.onTabPressed: phone.focus = true
         }
 
@@ -201,7 +246,7 @@ Window {
             Keys.onRightPressed: youtube.focus = true
             Keys.onUpPressed: playmusic.focus = true
             Keys.onDownPressed: playmusic.focus = true
-            Keys.onBacktabPressed: start.focus = true
+            Keys.onBacktabPressed: loader.focus = true
             Keys.onTabPressed: phone.focus = true
         }
 
@@ -220,7 +265,7 @@ Window {
             Keys.onRightPressed: spotify.focus = true
             Keys.onUpPressed: downloads.focus = true
             Keys.onDownPressed: downloads.focus = true
-            Keys.onBacktabPressed: start.focus = true
+            Keys.onBacktabPressed: loader.focus = true
             Keys.onTabPressed: phone.focus = true
         }
 
@@ -239,7 +284,7 @@ Window {
             Keys.onRightPressed: playmusic.focus = true
             Keys.onUpPressed: spotify.focus = true
             Keys.onDownPressed: spotify.focus = true
-            Keys.onBacktabPressed: start.focus = true
+            Keys.onBacktabPressed: loader.focus = true
             Keys.onTabPressed: phone.focus = true
         }
 
@@ -258,7 +303,7 @@ Window {
             Keys.onRightPressed: downloads.focus = true
             Keys.onUpPressed: playstore.focus = true
             Keys.onDownPressed: playstore.focus = true
-            Keys.onBacktabPressed: start.focus = true
+            Keys.onBacktabPressed: loader.focus = true
             Keys.onTabPressed: phone.focus = true
         }
 
@@ -277,7 +322,7 @@ Window {
             Keys.onRightPressed: pandora.focus = true
             Keys.onUpPressed: youtube.focus = true
             Keys.onDownPressed: youtube.focus = true
-            Keys.onBacktabPressed: start.focus = true
+            Keys.onBacktabPressed: loader.focus = true
             Keys.onTabPressed: phone.focus = true
         }
 
@@ -339,7 +384,7 @@ Window {
             }
             Keys.onRightPressed: podcast.focus = true
             Keys.onLeftPressed: settings.focus = true
-            Keys.onTabPressed: start.focus = true
+            Keys.onTabPressed: loader.focus = true
             Keys.onBacktabPressed: spotify.focus = true
         }
 
@@ -355,7 +400,7 @@ Window {
             }
             Keys.onRightPressed: play.focus=true
             Keys.onLeftPressed: phone.focus=true
-            Keys.onTabPressed: start.focus = true
+            Keys.onTabPressed: loader.focus = true
             Keys.onBacktabPressed: spotify.focus = true
         }
 
@@ -371,7 +416,7 @@ Window {
             }
             Keys.onRightPressed: menu.focus=true
             Keys.onLeftPressed: podcast.focus=true
-            Keys.onTabPressed: start.focus = true
+            Keys.onTabPressed: loader.focus = true
             Keys.onBacktabPressed: spotify.focus = true
         }
 
@@ -387,7 +432,7 @@ Window {
             }
             Keys.onRightPressed: maps.focus=true
             Keys.onLeftPressed: play.focus=true
-            Keys.onTabPressed: start.focus = true
+            Keys.onTabPressed: loader.focus = true
             Keys.onBacktabPressed: spotify.focus = true
         }
 
@@ -403,7 +448,7 @@ Window {
             }
             Keys.onRightPressed: music.focus=true
             Keys.onLeftPressed: menu.focus=true
-            Keys.onTabPressed: start.focus = true
+            Keys.onTabPressed: loader.focus = true
             Keys.onBacktabPressed: spotify.focus = true
         }
 
@@ -419,10 +464,9 @@ Window {
             }
             Keys.onRightPressed: settings.focus=true
             Keys.onLeftPressed: maps.focus=true
-            Keys.onTabPressed: start.focus = true
+            Keys.onTabPressed: loader.focus = true
             Keys.onBacktabPressed: spotify.focus = true
         }
-
 
         AppLauncher {
             id:settings
@@ -436,7 +480,7 @@ Window {
             }
             Keys.onRightPressed: phone.focus=true
             Keys.onLeftPressed: music.focus=true
-            Keys.onTabPressed: start.focus = true
+            Keys.onTabPressed: loader.focus = true
             Keys.onBacktabPressed: spotify.focus = true
 
         }
