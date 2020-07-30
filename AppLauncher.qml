@@ -10,6 +10,7 @@ FocusScope{
     implicitHeight: app.height
     implicitWidth: app.width
 
+    //Every app is composed by a background, an icon and a text
     Rectangle {
         id: app
         radius:13

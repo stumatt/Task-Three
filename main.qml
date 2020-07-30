@@ -7,18 +7,15 @@ Window {
     height: width/2
     title: qsTr("Task Three")
 
+    //Root
     Rectangle {
         id:root
         color:"#222"
         anchors.fill:parent
 
-        //Blocco Media Player
+        //Media Player
         Rectangle {
             id:player
-
-//            Keys.onRightPressed:  thumbsup.focus=true
-//            Keys.onBacktabPressed: phone.focus = true
-
             anchors{
                 top: root.top
                 topMargin: 10
@@ -29,23 +26,21 @@ Window {
                 bottomMargin: 0.03*root.height
             }
 
-                        Image {
-                            id: player_image
-                            source: "images/taylor.jpg"
-                            anchors.fill: parent
-                        }
+            Image {
+                id: player_image
+                source: "images/taylor.jpg"
+                anchors.fill: parent
+            }
 
+            //PlayerBar
             Rectangle{
                 id:playerbar
                 width: player.width
                 height: player.height*0.25
                 color:"white"
                 anchors.top: player.bottom
-//                border {
-//                    color: player.activeFocus ? "yellow" : color
-//                    width: 5
-//                }
 
+                //Player Buttons
                 BorderImage {
                     id: thumbsup
                     source: "images/thumbs_up.png"
@@ -171,13 +166,12 @@ Window {
 
         }
 
-        //Blocco App
-
+        //Other Apps
         AppLauncher {
             id:spotify
             icon: "images/spotify.png"
             background: "#0dd3ff"
-            text: "Spotify"            
+            text: "Spotify"
             anchors {
                 top: parent.top
                 topMargin: __margin
@@ -196,7 +190,7 @@ Window {
             id:playstore
             icon: "images/playstore.png"
             background: "#a51890"
-            text: "Play Store"            
+            text: "Play Store"
             anchors {
                 top: parent.top
                 topMargin: __margin
@@ -288,7 +282,7 @@ Window {
         }
 
 
-
+        // Three lines in the middle
         Rectangle {
             id:left
             color:"#d7d7d8"
@@ -331,13 +325,12 @@ Window {
         }
 
 
-        // Blocco app recenti
-
+        //Recent Apps
         AppLauncher {
             id:phone
             icon: "images/phone.png"
             background: "#72ef36"
-          //focus:true
+            //focus:true
             anchors {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
@@ -353,7 +346,7 @@ Window {
         AppLauncher {
             id:podcast
             icon: "images/podcast.png"
-            background: "#a51890"            
+            background: "#a51890"
             anchors {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
@@ -375,7 +368,7 @@ Window {
                 bottomMargin: __margin * 1.5
                 left: podcast.right
                 leftMargin: __margin * 2.4
-            }            
+            }
             Keys.onRightPressed: menu.focus=true
             Keys.onLeftPressed: podcast.focus=true
             Keys.onTabPressed: start.focus = true
@@ -407,7 +400,7 @@ Window {
                 bottomMargin: __margin * 1.5
                 left: menu.right
                 leftMargin: __margin * 2.4
-            }            
+            }
             Keys.onRightPressed: music.focus=true
             Keys.onLeftPressed: menu.focus=true
             Keys.onTabPressed: start.focus = true
