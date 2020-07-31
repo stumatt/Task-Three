@@ -45,17 +45,6 @@ Window {
                     //focus: true
                 }
 
-                //debug
-                Rectangle {
-                    anchors.fill: parent
-                    anchors.margins: -border.width
-                    z: -1
-                    border.width: 50
-                    border.color: "#ffc20e"
-                    color: 'transparent'
-                    visible: parent.focus ? true:false
-                }
-
                 //PlayerBar
                 Rectangle{
                     id:playerbar
@@ -64,17 +53,6 @@ Window {
                     color:"white"
                     anchors.top: player.bottom
                     //activeFocusOnTab: true
-
-                    //debug: non vogliamo questo focus
-                    Rectangle {
-                        anchors.fill: parent
-                        anchors.margins: -border.width
-                        z: -1
-                        border.width: 3
-                        border.color: "#ffc20e"
-                        color: 'transparent'
-                        visible: parent.focus ? true:false
-                    }
 
                     //Player Buttons
                     BorderImage {
@@ -98,7 +76,7 @@ Window {
                             border.width: 3
                             border.color: "#ffc20e"
                             color: 'transparent'
-                            visible: parent.focus ? true:false
+                            visible: parent.activeFocus ? true:false
                         }
                     }
 
@@ -124,7 +102,7 @@ Window {
                             border.width: 3
                             border.color: "#ffc20e"
                             color: 'transparent'
-                            visible: parent.focus ? true:false
+                            visible: parent.activeFocus ? true:false
                         }
                     }
 
@@ -149,7 +127,7 @@ Window {
                             border.width: 3
                             border.color: "#ffc20e"
                             color: 'transparent'
-                            visible: parent.focus ? true:false
+                            visible: parent.activeFocus ? true:false
                         }
                     }
 
@@ -174,7 +152,7 @@ Window {
                             border.width: 3
                             border.color: "#ffc20e"
                             color: 'transparent'
-                            visible: parent.focus ? true:false
+                            visible: parent.activeFocus ? true:false
                         }
 
                     }
@@ -200,7 +178,7 @@ Window {
                             border.width: 3
                             border.color: "#ffc20e"
                             color: 'transparent'
-                            visible: parent.focus ? true:false
+                            visible: parent.activeFocus ? true:false
                         }
                     }
                 }
@@ -216,20 +194,22 @@ Window {
             icon: "images/spotify.png"
             background: "#0dd3ff"
             text: "Spotify"
-            focus:true
+            focus:true            
             anchors {
                 top: parent.top
                 topMargin: __margin
                 left: parent.horizontalCenter
                 leftMargin: __margin * 4
             }
-            Keys.onLeftPressed: youtube.focus = true
-            Keys.onRightPressed: playstore.focus = true
-            Keys.onUpPressed: pandora.focus = true
-            Keys.onDownPressed: pandora.focus = true
-            Keys.onBacktabPressed: loader.focus= true
-            Keys.onTabPressed: phone.focus = true
+            KeyNavigation.left: youtube
+            KeyNavigation.right: playstore
+            KeyNavigation.up: pandora
+            KeyNavigation.down: pandora
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: phone
         }
+
+
 
         AppLauncher {
             id:playstore
@@ -242,12 +222,12 @@ Window {
                 left: spotify.right
                 leftMargin: __margin * 4
             }
-            Keys.onLeftPressed: spotify.focus = true
-            Keys.onRightPressed: youtube.focus = true
-            Keys.onUpPressed: playmusic.focus = true
-            Keys.onDownPressed: playmusic.focus = true
-            Keys.onBacktabPressed: loader.focus = true
-            Keys.onTabPressed: phone.focus = true
+            KeyNavigation.left: spotify
+            KeyNavigation.right: youtube
+            KeyNavigation.up: playmusic
+            KeyNavigation.down: playmusic
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: phone
         }
 
         AppLauncher {
@@ -261,12 +241,12 @@ Window {
                 left: playstore.right
                 leftMargin: __margin * 4
             }
-            Keys.onLeftPressed: playstore.focus = true
-            Keys.onRightPressed: spotify.focus = true
-            Keys.onUpPressed: downloads.focus = true
-            Keys.onDownPressed: downloads.focus = true
-            Keys.onBacktabPressed: loader.focus = true
-            Keys.onTabPressed: phone.focus = true
+            KeyNavigation.left: playstore
+            KeyNavigation.right: spotify
+            KeyNavigation.up: downloads
+            KeyNavigation.down: downloads
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: phone
         }
 
         AppLauncher {
@@ -280,12 +260,12 @@ Window {
                 left: parent.horizontalCenter
                 leftMargin: __margin * 4
             }
-            Keys.onLeftPressed: downloads.focus = true
-            Keys.onRightPressed: playmusic.focus = true
-            Keys.onUpPressed: spotify.focus = true
-            Keys.onDownPressed: spotify.focus = true
-            Keys.onBacktabPressed: loader.focus = true
-            Keys.onTabPressed: phone.focus = true
+            KeyNavigation.left: downloads
+            KeyNavigation.right: playmusic
+            KeyNavigation.up: spotify
+            KeyNavigation.down: spotify
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: phone
         }
 
         AppLauncher {
@@ -299,12 +279,12 @@ Window {
                 left: pandora.right
                 leftMargin: __margin * 4
             }
-            Keys.onLeftPressed: pandora.focus = true
-            Keys.onRightPressed: downloads.focus = true
-            Keys.onUpPressed: playstore.focus = true
-            Keys.onDownPressed: playstore.focus = true
-            Keys.onBacktabPressed: loader.focus = true
-            Keys.onTabPressed: phone.focus = true
+            KeyNavigation.left: pandora
+            KeyNavigation.right: downloads
+            KeyNavigation.up: playstore
+            KeyNavigation.down: playstore
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: phone
         }
 
         AppLauncher {
@@ -318,12 +298,12 @@ Window {
                 left: playmusic.right
                 leftMargin: __margin * 4
             }
-            Keys.onLeftPressed: playmusic.focus = true
-            Keys.onRightPressed: pandora.focus = true
-            Keys.onUpPressed: youtube.focus = true
-            Keys.onDownPressed: youtube.focus = true
-            Keys.onBacktabPressed: loader.focus = true
-            Keys.onTabPressed: phone.focus = true
+            KeyNavigation.left: playmusic
+            KeyNavigation.right: pandora
+            KeyNavigation.up: youtube
+            KeyNavigation.down: youtube
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: phone
         }
 
 
@@ -382,10 +362,10 @@ Window {
                 left: parent.left
                 leftMargin: __margin * 1.5
             }
-            Keys.onRightPressed: podcast.focus = true
-            Keys.onLeftPressed: settings.focus = true
-            Keys.onTabPressed: loader.focus = true
-            Keys.onBacktabPressed: spotify.focus = true
+            KeyNavigation.left: settings
+            KeyNavigation.right: podcast
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: spotify
         }
 
         AppLauncher {
@@ -398,10 +378,10 @@ Window {
                 left: phone.right
                 leftMargin: __margin * 2.4
             }
-            Keys.onRightPressed: play.focus=true
-            Keys.onLeftPressed: phone.focus=true
-            Keys.onTabPressed: loader.focus = true
-            Keys.onBacktabPressed: spotify.focus = true
+            KeyNavigation.left: phone
+            KeyNavigation.right: play
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: spotify
         }
 
         AppLauncher {
@@ -414,10 +394,10 @@ Window {
                 left: podcast.right
                 leftMargin: __margin * 2.4
             }
-            Keys.onRightPressed: menu.focus=true
-            Keys.onLeftPressed: podcast.focus=true
-            Keys.onTabPressed: loader.focus = true
-            Keys.onBacktabPressed: spotify.focus = true
+            KeyNavigation.left: podcast
+            KeyNavigation.right: menu
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: spotify
         }
 
         AppLauncher {
@@ -430,10 +410,10 @@ Window {
                 left: play.right
                 leftMargin: __margin * 2.4
             }
-            Keys.onRightPressed: maps.focus=true
-            Keys.onLeftPressed: play.focus=true
-            Keys.onTabPressed: loader.focus = true
-            Keys.onBacktabPressed: spotify.focus = true
+            KeyNavigation.left: play
+            KeyNavigation.right: maps
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: spotify
         }
 
         AppLauncher {
@@ -446,10 +426,10 @@ Window {
                 left: menu.right
                 leftMargin: __margin * 2.4
             }
-            Keys.onRightPressed: music.focus=true
-            Keys.onLeftPressed: menu.focus=true
-            Keys.onTabPressed: loader.focus = true
-            Keys.onBacktabPressed: spotify.focus = true
+            KeyNavigation.left: menu
+            KeyNavigation.right: music
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: spotify
         }
 
         AppLauncher {
@@ -462,10 +442,10 @@ Window {
                 left: maps.right
                 leftMargin: __margin * 2.4
             }
-            Keys.onRightPressed: settings.focus=true
-            Keys.onLeftPressed: maps.focus=true
-            Keys.onTabPressed: loader.focus = true
-            Keys.onBacktabPressed: spotify.focus = true
+            KeyNavigation.left: maps
+            KeyNavigation.right: settings
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: spotify
         }
 
         AppLauncher {
@@ -478,11 +458,10 @@ Window {
                 right: root.right
                 rightMargin: __margin * 1.5
             }
-            Keys.onRightPressed: phone.focus=true
-            Keys.onLeftPressed: music.focus=true
-            Keys.onTabPressed: loader.focus = true
-            Keys.onBacktabPressed: spotify.focus = true
-
+            KeyNavigation.left: music
+            KeyNavigation.right: phone
+            KeyNavigation.backtab: loader
+            KeyNavigation.tab: spotify
         }
 
 
