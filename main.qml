@@ -31,20 +31,16 @@ Window {
         //Media Player
         Component {
             id: media_player
-
             Rectangle {
                 id:player
-                width: loader.width
-                height: loader.height
-                //activeFocusOnTab: true
-                //focus: true
+                implicitWidth: player_image.width
+                implicitHeight: player_image.height
                 Image {
                     id: player_image
                     source: "images/taylor.jpg"
                     anchors.fill: parent
                     //focus: true
                 }
-
                 //PlayerBar
                 Rectangle{
                     id:playerbar
@@ -199,7 +195,7 @@ Window {
                 top: parent.top
                 topMargin: __margin
                 left: parent.horizontalCenter
-                leftMargin: __margin * 4
+                leftMargin: __margin * 5
             }
             KeyNavigation.left: youtube
             KeyNavigation.right: playstore
@@ -220,7 +216,7 @@ Window {
                 top: parent.top
                 topMargin: __margin
                 left: spotify.right
-                leftMargin: __margin * 4
+                leftMargin: __margin * 5
             }
             KeyNavigation.left: spotify
             KeyNavigation.right: youtube
@@ -239,7 +235,7 @@ Window {
                 top: parent.top
                 topMargin: __margin
                 left: playstore.right
-                leftMargin: __margin * 4
+                leftMargin: __margin * 5
             }
             KeyNavigation.left: playstore
             KeyNavigation.right: spotify
@@ -258,7 +254,7 @@ Window {
                 top: spotify.bottom
                 topMargin: __margin * 3
                 left: parent.horizontalCenter
-                leftMargin: __margin * 4
+                leftMargin: __margin * 5
             }
             KeyNavigation.left: downloads
             KeyNavigation.right: playmusic
@@ -277,7 +273,7 @@ Window {
                 top: playstore.bottom
                 topMargin: __margin * 3
                 left: pandora.right
-                leftMargin: __margin * 4
+                leftMargin: __margin * 5
             }
             KeyNavigation.left: pandora
             KeyNavigation.right: downloads
@@ -296,7 +292,7 @@ Window {
                 top: youtube.bottom
                 topMargin: __margin * 3
                 left: playmusic.right
-                leftMargin: __margin * 4
+                leftMargin: __margin * 5
             }
             KeyNavigation.left: playmusic
             KeyNavigation.right: pandora
@@ -354,7 +350,7 @@ Window {
         AppLauncher {
             id:phone
             icon: "images/phone.png"
-            background: "#72ef36"
+            background: "#72ef36"            
             //focus:true
             anchors {
                 bottom: parent.bottom
@@ -364,8 +360,8 @@ Window {
             }
             KeyNavigation.left: settings
             KeyNavigation.right: podcast
-            KeyNavigation.backtab: loader
-            KeyNavigation.tab: spotify
+            KeyNavigation.backtab: spotify
+            KeyNavigation.tab: loader
         }
 
         AppLauncher {
@@ -376,12 +372,12 @@ Window {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
                 left: phone.right
-                leftMargin: __margin * 2.4
+                leftMargin: __margin *  4.5
             }
             KeyNavigation.left: phone
             KeyNavigation.right: play
-            KeyNavigation.backtab: loader
-            KeyNavigation.tab: spotify
+            KeyNavigation.backtab: spotify
+            KeyNavigation.tab: loader
         }
 
         AppLauncher {
@@ -392,12 +388,12 @@ Window {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
                 left: podcast.right
-                leftMargin: __margin * 2.4
+                leftMargin: __margin * 4.5
             }
             KeyNavigation.left: podcast
             KeyNavigation.right: menu
-            KeyNavigation.backtab: loader
-            KeyNavigation.tab: spotify
+            KeyNavigation.backtab: spotify
+            KeyNavigation.tab: loader
         }
 
         AppLauncher {
@@ -408,12 +404,12 @@ Window {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
                 left: play.right
-                leftMargin: __margin * 2.4
+                leftMargin: __margin * 4.5
             }
             KeyNavigation.left: play
             KeyNavigation.right: maps
-            KeyNavigation.backtab: loader
-            KeyNavigation.tab: spotify
+            KeyNavigation.backtab: spotify
+            KeyNavigation.tab: loader
         }
 
         AppLauncher {
@@ -424,12 +420,12 @@ Window {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
                 left: menu.right
-                leftMargin: __margin * 2.4
+                leftMargin: __margin * 4.5
             }
             KeyNavigation.left: menu
             KeyNavigation.right: music
-            KeyNavigation.backtab: loader
-            KeyNavigation.tab: spotify
+            KeyNavigation.backtab: spotify
+            KeyNavigation.tab: loader
         }
 
         AppLauncher {
@@ -440,12 +436,12 @@ Window {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
                 left: maps.right
-                leftMargin: __margin * 2.4
+                leftMargin: __margin * 4.5
             }
             KeyNavigation.left: maps
             KeyNavigation.right: settings
-            KeyNavigation.backtab: loader
-            KeyNavigation.tab: spotify
+            KeyNavigation.backtab: spotify
+            KeyNavigation.tab: loader
         }
 
         AppLauncher {
@@ -455,13 +451,13 @@ Window {
             anchors {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
-                right: root.right
-                rightMargin: __margin * 1.5
+                left: music.right
+                leftMargin: __margin * 4.5
             }
             KeyNavigation.left: music
             KeyNavigation.right: phone
-            KeyNavigation.backtab: loader
-            KeyNavigation.tab: spotify
+            KeyNavigation.backtab: spotify
+            KeyNavigation.tab: loader
         }
 
 
