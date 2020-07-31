@@ -14,9 +14,6 @@ FocusScope{ //Se non mettessi FocusScope non riuscirei a spostarmi fra le AppLau
     Rectangle {
         id: app
         radius:13
-//        width: app_icon.implicitWidth + __margin * 2
-//        height: app_icon.implicitHeight + __margin * 2
-
         width:__margin*10
         height:__margin*10
         focus: true

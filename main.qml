@@ -13,7 +13,7 @@ Window {
         color:"#222"
         anchors.fill:parent
 
-        Loader {
+        Loader { //it is an active focus
             id:loader
             sourceComponent: media_player
             focus: true
@@ -38,8 +38,7 @@ Window {
                 Image {
                     id: player_image
                     source: "images/taylor.jpg"
-                    anchors.fill: parent
-                    //focus: true
+                    anchors.fill: parent                    
                 }
                 //PlayerBar
                 Rectangle{
@@ -48,22 +47,20 @@ Window {
                     height: player.height*0.25
                     color:"white"
                     anchors.top: player.bottom
-                    //activeFocusOnTab: true
 
                     //Player Buttons
                     BorderImage {
                         id: thumbsup
-                        source: "images/thumbs_up.png"
-                        //focus: true
+                        source: "images/thumbs_up.png"                        
                         anchors {
                             verticalCenter: start.verticalCenter
                             left: playerbar.left
                             leftMargin: playerbar.width*0.05
                         }
-                        Keys.onRightPressed: previous.focus = true
-                        Keys.onLeftPressed: thumbsdown.focus = true
-                        Keys.onBacktabPressed: phone.focus = true
-                        Keys.onTabPressed: spotify.focus = true
+                        KeyNavigation.right:  previous
+                        KeyNavigation.left:  thumbsdown
+                        KeyNavigation.backtab: phone
+                        KeyNavigation.tab:  spotify
 
                         Rectangle {
                             anchors.fill: parent
@@ -79,17 +76,16 @@ Window {
 
                     BorderImage {
                         id: previous
-                        source: "images/previous.png"
-                        //focus: true
+                        source: "images/previous.png"                        
                         anchors {
                             verticalCenter: start.verticalCenter
                             right: start.left
                             rightMargin: playerbar.width*0.15
                         }
-                        Keys.onLeftPressed: thumbsup.focus = true
-                        Keys.onRightPressed: start.focus = true
-                        Keys.onBacktabPressed: phone.focus = true
-                        Keys.onTabPressed: spotify.focus = true
+                        KeyNavigation.right:  start
+                        KeyNavigation.left:  thumbsup
+                        KeyNavigation.backtab: phone
+                        KeyNavigation.tab:  spotify
 
                         Rectangle {
                             anchors.fill: parent
@@ -105,16 +101,15 @@ Window {
                     BorderImage {
                         id:start
                         source: "images/start.png"
-//                        activeFocusOnTab: true
                         focus: true
                         anchors {
                             horizontalCenter: playerbar.horizontalCenter
                             verticalCenter: playerbar.verticalCenter
                         }
-                        Keys.onLeftPressed: previous.focus = true
-                        Keys.onRightPressed: next.focus = true
-                        Keys.onBacktabPressed: phone.focus = true
-                        Keys.onTabPressed: spotify.focus = true
+                        KeyNavigation.right:  next
+                        KeyNavigation.left:  previous
+                        KeyNavigation.backtab: phone
+                        KeyNavigation.tab:  spotify
 
                         Rectangle {
                             anchors.fill: parent
@@ -130,16 +125,15 @@ Window {
                     BorderImage {
                         id: next
                         source: "images/next.png"
-                        //focus: true
                         anchors {
                             verticalCenter: start.verticalCenter
                             left: start.right
                             leftMargin: playerbar.width*0.15
                         }
-                        Keys.onLeftPressed: start.focus = true
-                        Keys.onRightPressed: thumbsdown.focus = true
-                        Keys.onBacktabPressed: phone.focus = true
-                        Keys.onTabPressed: spotify.focus = true
+                        KeyNavigation.right:  thumbsdown
+                        KeyNavigation.left:  start
+                        KeyNavigation.backtab: phone
+                        KeyNavigation.tab:  spotify
 
                         Rectangle {
                             anchors.fill: parent
@@ -156,16 +150,15 @@ Window {
                     BorderImage {
                         id: thumbsdown
                         source: "images/thumbs_down.png"
-                        //focus: true
                         anchors {
                             verticalCenter: start.verticalCenter
                             right: playerbar.right
                             rightMargin: playerbar.width*0.05
                         }
-                        Keys.onLeftPressed: next.focus = true
-                        Keys.onRightPressed: thumbsup.focus = true
-                        Keys.onBacktabPressed: phone.focus = true
-                        Keys.onTabPressed: spotify.focus = true
+                        KeyNavigation.right:  thumbsup
+                        KeyNavigation.left:  next
+                        KeyNavigation.backtab: phone
+                        KeyNavigation.tab:  spotify
 
                         Rectangle {
                             anchors.fill: parent
@@ -189,8 +182,7 @@ Window {
             id:spotify
             icon: "images/spotify.png"
             background: "#0dd3ff"
-            text: "Spotify"
-            focus:true            
+            text: "Spotify"           
             anchors {
                 top: parent.top
                 topMargin: __margin
@@ -252,7 +244,7 @@ Window {
             text: "Pandora"
             anchors {
                 top: spotify.bottom
-                topMargin: __margin * 3
+                topMargin: __margin * 4
                 left: parent.horizontalCenter
                 leftMargin: __margin * 5
             }
@@ -271,7 +263,7 @@ Window {
             text: "Play Music"
             anchors {
                 top: playstore.bottom
-                topMargin: __margin * 3
+                topMargin: __margin * 4
                 left: pandora.right
                 leftMargin: __margin * 5
             }
@@ -290,7 +282,7 @@ Window {
             text: "Downloads"
             anchors {
                 top: youtube.bottom
-                topMargin: __margin * 3
+                topMargin: __margin * 4
                 left: playmusic.right
                 leftMargin: __margin * 5
             }
@@ -351,7 +343,6 @@ Window {
             id:phone
             icon: "images/phone.png"
             background: "#72ef36"            
-            //focus:true
             anchors {
                 bottom: parent.bottom
                 bottomMargin: __margin * 1.5
