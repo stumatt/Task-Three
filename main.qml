@@ -180,14 +180,15 @@ Window {
         //Other Apps
         AppLauncher {
             id:spotify
+            margin: root.width*0.01
             icon: "images/spotify.png"
             background: "#0dd3ff"
             text: "Spotify"           
             anchors {
                 top: parent.top
-                topMargin: __margin
+                topMargin: margin*2
                 left: parent.horizontalCenter
-                leftMargin: __margin * 5
+                leftMargin: margin * 5
             }
             KeyNavigation.left: youtube
             KeyNavigation.right: playstore
@@ -201,14 +202,15 @@ Window {
 
         AppLauncher {
             id:playstore
+            margin: root.width*0.01
             icon: "images/playstore.png"
             background: "#a51890"
             text: "Play Store"
             anchors {
                 top: parent.top
-                topMargin: __margin
+                topMargin: margin*2
                 left: spotify.right
-                leftMargin: __margin * 5
+                leftMargin: margin * 5
             }
             KeyNavigation.left: spotify
             KeyNavigation.right: youtube
@@ -220,14 +222,15 @@ Window {
 
         AppLauncher {
             id:youtube
+            margin: root.width*0.01
             icon: "images/youtube.png"
             background: "#fe5000"
             text: "Youtube"
             anchors {
                 top: parent.top
-                topMargin: __margin
+                topMargin: margin*2
                 left: playstore.right
-                leftMargin: __margin * 5
+                leftMargin: margin * 5
             }
             KeyNavigation.left: playstore
             KeyNavigation.right: spotify
@@ -239,14 +242,15 @@ Window {
 
         AppLauncher {
             id: pandora
+            margin: root.width*0.01
             icon: "images/pandora.png"
             background: "#fff"
             text: "Pandora"
             anchors {
                 top: spotify.bottom
-                topMargin: __margin * 4
+                topMargin: margin * 4
                 left: parent.horizontalCenter
-                leftMargin: __margin * 5
+                leftMargin: margin * 5
             }
             KeyNavigation.left: downloads
             KeyNavigation.right: playmusic
@@ -258,14 +262,15 @@ Window {
 
         AppLauncher {
             id: playmusic
+            margin: root.width*0.01
             icon: "images/playmusic.png"
             background: "yellow"
             text: "Play Music"
             anchors {
                 top: playstore.bottom
-                topMargin: __margin * 4
+                topMargin: margin * 4
                 left: pandora.right
-                leftMargin: __margin * 5
+                leftMargin: margin * 5
             }
             KeyNavigation.left: pandora
             KeyNavigation.right: downloads
@@ -277,14 +282,15 @@ Window {
 
         AppLauncher {
             id: downloads
+            margin: root.width*0.01
             icon: "images/downloads.png"
             background: "#72ef36"
             text: "Downloads"
             anchors {
                 top: youtube.bottom
-                topMargin: __margin * 4
+                topMargin: margin * 4
                 left: playmusic.right
-                leftMargin: __margin * 5
+                leftMargin: margin * 5
             }
             KeyNavigation.left: playmusic
             KeyNavigation.right: pandora
@@ -341,13 +347,14 @@ Window {
         //Recent Apps
         AppLauncher {
             id:phone
+            margin: root.width*0.011
             icon: "images/phone.png"
             background: "#72ef36"            
             anchors {
                 bottom: parent.bottom
-                bottomMargin: __margin * 1.5
+                bottomMargin: margin * 1.5
                 left: parent.left
-                leftMargin: __margin * 1.5
+                leftMargin: margin * 1.5
             }
             KeyNavigation.left: settings
             KeyNavigation.right: podcast
@@ -357,13 +364,14 @@ Window {
 
         AppLauncher {
             id:podcast
+            margin: root.width*0.011
             icon: "images/podcast.png"
             background: "#a51890"
             anchors {
                 bottom: parent.bottom
-                bottomMargin: __margin * 1.5
+                bottomMargin: margin * 1.5
                 left: phone.right
-                leftMargin: __margin *  4.5
+                leftMargin: margin *  4.5
             }
             KeyNavigation.left: phone
             KeyNavigation.right: play
@@ -373,13 +381,14 @@ Window {
 
         AppLauncher {
             id:play
+            margin: root.width*0.011
             icon: "images/play.png"
             background: "#0dd3ff"
             anchors {
                 bottom: parent.bottom
-                bottomMargin: __margin * 1.5
+                bottomMargin: margin * 1.5
                 left: podcast.right
-                leftMargin: __margin * 4.5
+                leftMargin: margin * 4.5
             }
             KeyNavigation.left: podcast
             KeyNavigation.right: menu
@@ -389,13 +398,14 @@ Window {
 
         AppLauncher {
             id:menu
+            margin: root.width*0.011
             icon: "images/menu.png"
             background: "#fff"
             anchors {
                 bottom: parent.bottom
-                bottomMargin: __margin * 1.5
+                bottomMargin: margin * 1.5
                 left: play.right
-                leftMargin: __margin * 4.5
+                leftMargin: margin * 4.5
             }
             KeyNavigation.left: play
             KeyNavigation.right: maps
@@ -405,13 +415,14 @@ Window {
 
         AppLauncher {
             id:maps
+            margin: root.width*0.011
             icon: "images/maps.png"
             background: "white"
             anchors {
                 bottom: parent.bottom
-                bottomMargin: __margin * 1.5
+                bottomMargin: margin * 1.5
                 left: menu.right
-                leftMargin: __margin * 4.5
+                leftMargin: margin * 4.5
             }
             KeyNavigation.left: menu
             KeyNavigation.right: music
@@ -421,13 +432,14 @@ Window {
 
         AppLauncher {
             id:music
+            margin: root.width*0.011
             icon: "images/music.png"
             background: "purple"
             anchors {
                 bottom: parent.bottom
-                bottomMargin: __margin * 1.5
+                bottomMargin: margin * 1.5
                 left: maps.right
-                leftMargin: __margin * 4.5
+                leftMargin: margin * 4.5
             }
             KeyNavigation.left: maps
             KeyNavigation.right: settings
@@ -437,13 +449,14 @@ Window {
 
         AppLauncher {
             id:settings
+            margin: root.width*0.011
             icon: "images/settings.png"
             background: "#caccd1"
             anchors {
                 bottom: parent.bottom
-                bottomMargin: __margin * 1.5
+                bottomMargin: margin * 1.5
                 left: music.right
-                leftMargin: __margin * 4.5
+                leftMargin: margin * 4.5
             }
             KeyNavigation.left: music
             KeyNavigation.right: phone

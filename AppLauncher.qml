@@ -5,7 +5,9 @@ FocusScope{ //Se non mettessi FocusScope non riuscirei a spostarmi fra le AppLau
     property alias background: app.color
     property alias icon: app_icon.source
     property alias text: app_name.text
-    property int __margin: parent.width*0.01
+    property alias appHeight: app.height
+    property alias appWidth: app.width
+    property int margin: 0
 
     implicitHeight: app.height
     implicitWidth: app.width
@@ -14,8 +16,8 @@ FocusScope{ //Se non mettessi FocusScope non riuscirei a spostarmi fra le AppLau
     Rectangle {
         id: app
         radius:13
-        width:__margin*10
-        height:__margin*10
+        width:margin*10
+        height:margin*10
         focus: true
         border {
             color: activeFocus ? "#ffc20e" : color
@@ -34,7 +36,7 @@ FocusScope{ //Se non mettessi FocusScope non riuscirei a spostarmi fra le AppLau
         color: "white"
         anchors {
             top: app.bottom
-            topMargin: __margin / 2
+            topMargin: margin / 2
             horizontalCenter: parent.horizontalCenter
         }
     }
